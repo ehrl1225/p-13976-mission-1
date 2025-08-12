@@ -1,4 +1,4 @@
-package com.domain.command.command.controller
+package com.domain.command.command.factory
 
 import com.domain.command.command.entity.Command
 import com.domain.command.command.service.CommandService
@@ -6,7 +6,7 @@ import com.global.Ut.text.ReadText
 import com.global.Ut.text.WriteText
 import com.global.cotext.ContextManager
 
-class CommandController {
+class CommandFactory {
     val readText by lazy { ContextManager.get<ReadText>("readText")!! }
     val writeText by lazy { ContextManager.get<WriteText>("writeText")!! }
     val commandService by lazy{ ContextManager.get<CommandService>("commandService")!! }

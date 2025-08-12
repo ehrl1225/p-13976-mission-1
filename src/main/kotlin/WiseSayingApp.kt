@@ -1,7 +1,7 @@
 package com
 
-import com.domain.command.command.controller.CommandController
 import com.domain.command.command.entity.Command
+import com.domain.command.command.factory.CommandFactory
 import com.global.Ut.text.ReadText
 import com.global.Ut.text.WriteText
 import com.global.config.RunMode
@@ -15,8 +15,8 @@ class WiseSayingApp(
         ContextManager.set("runMode", runMode)
     }
 
-    private val commandController by lazy{
-        ContextManager.get<CommandController>("commandController")!!
+    private val commandFactory by lazy{
+        ContextManager.get<CommandFactory>("commandFactory")!!
     }
     private val request by lazy{
         ContextManager.get<Request>("request")!!
@@ -37,10 +37,9 @@ class WiseSayingApp(
 
             if (command == null)
                 continue
-            request.work(command)
-            if (command.command == "종료"){
+            if (!request.work(command))
                 break
-            }
+
         }
     }
 
@@ -53,7 +52,7 @@ class WiseSayingApp(
             writeText.writeln("명령어를 입력해주세요.")
             return null;
         }
-        val command = commandController.getCommand(input)
+        val command = commandFactory.getCommand(input)
         return command;
     }
 }

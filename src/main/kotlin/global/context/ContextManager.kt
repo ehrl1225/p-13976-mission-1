@@ -1,6 +1,6 @@
 package com.global.cotext
 
-import com.domain.command.command.controller.CommandController
+import com.domain.command.command.factory.CommandFactory
 import com.domain.command.command.service.CommandService
 import com.domain.wiseSaying.wiseSaying.controller.WiseSayingController
 import com.domain.wiseSaying.wiseSaying.repository.WiseSayingRepositoryFile
@@ -20,7 +20,7 @@ class ContextManager{
             context.put("writeText", WriteText() as Object)
             context.put("wiseSayingRepositoryJson", WiseSayingRepositoryJson() as Object)
             context.put("wiseSayingRepositoryFile", WiseSayingRepositoryFile() as Object)
-            context.put("commandController" , CommandController() as Object)
+            context.put("commandFactory" , CommandFactory() as Object)
             context.put("wiseSayingController" , WiseSayingController() as Object)
             context.put("request" , Request() as Object)
             context.put("wiseSayingService", WiseSayingService() as Object)
